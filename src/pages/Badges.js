@@ -2,11 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles/Badges.css';
-import confLogo from '../images/badge-header.svg';
+
+import Logo from '../images/badge-header.svg';
 import BadgesList from '../components/BadgesList';
+import PageLoading from '../components/PageLoading';
+import PageError from '../components/PageError';
+
+import api from '../api'
 
 class Badges extends React.Component {
-  constructor(props) {
+
+  state = {
+    loading: true,
+    error: null,
+    data: undefined,
+  };
+
+
+
+  /* constructor(props) {
     super(props);
     console.log('1. constructor()');
 
@@ -17,10 +31,12 @@ class Badges extends React.Component {
 
   componentDidMount() {
     console.log('3. componentDidMount()');
+    this.fetchCharacters();
 
     this.timeoutId = setTimeout(() => {
       this.setState({
         data: [
+
           {
             id: '2de30c42-9deb-40fc-a41f-05e62b5939a7',
             firstName: 'Freda',
@@ -56,6 +72,12 @@ class Badges extends React.Component {
     }, 3000);
   }
 
+  fetchCharacters = async () => {
+    this.setState();
+  };
+
+
+  //recibe 2 argumentos: props que teniamos antes y el state que teniamos antes
   componentDidUpdate(prevProps, prevState) {
     console.log('5. componentDidUpdate()');
     console.log({
@@ -71,11 +93,37 @@ class Badges extends React.Component {
 
   componentWillUnmount() {
     console.log('6. componentWillUnmount');
+    //clearTimeout para eliminar un Id que ya expiro. Hicimos un trabajo de limpieza de memoria
     clearTimeout(this.timeoutId);
+  } */
+
+  componentDidMount () {
+    //comenzar la peticion 
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    this.setState({ loading: true, error: null });
+    
+    try {
+      const data = await api.badges.list();//llamada asyncrona, regresa una promesa
+      this.setState({ loading: false, data: data })
+    } catch (error) {
+      this.setState( { loading: false, error: error });
+    }
   }
 
   render() {
     console.log('2/4. render()');
+    
+    if (this.state.loading === true) {
+      return <PageLoading />;
+    }
+
+    if(this.state.error) {
+      return <PageError error={this.state.error} />;
+    }
+
     return (
       <React.Fragment>
         <div className="Badges">
@@ -83,7 +131,7 @@ class Badges extends React.Component {
             <div className="Badges__container">
               <img
                 className="Badges_conf-logo"
-                src={confLogo}
+                src={ Logo }
                 alt="Conf Logo"
               />
             </div>
@@ -92,6 +140,7 @@ class Badges extends React.Component {
 
         <div className="Badges__container">
           <div className="Badges__buttons">
+            {/* en vez de href usamos TO */}
             <Link to="/badges/new" className="btn btn-primary">
               New Badge
             </Link>

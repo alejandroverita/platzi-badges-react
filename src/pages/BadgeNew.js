@@ -6,6 +6,7 @@ import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 
 class BadgeNew extends React.Component {
+  //inicializa el estado del objeto cambiando el componente de incontrolado a controlado
   state = {
     form: {
       firstName: '',
@@ -17,10 +18,17 @@ class BadgeNew extends React.Component {
   };
 
   handleChange = e => {
+
+    /* console.log({
+        name: e.target.name,
+        value: e.target.value,
+    }) */
     this.setState({
       form: {
-        ...this.state.form,
-        [e.target.name]: e.target.value,
+        //para evitar que se sobrescriba
+        ...this.state.form, 
+        //guarda la informacion del respectivo input
+        [e.target.name]: e.target.value, 
       },
     });
   };
@@ -48,6 +56,7 @@ class BadgeNew extends React.Component {
             <div className="col-6">
               <BadgeForm
                 onChange={this.handleChange}
+                //se le pasa los valores del formulario con formValues al BadgeForm.js
                 formValues={this.state.form}
               />
             </div>

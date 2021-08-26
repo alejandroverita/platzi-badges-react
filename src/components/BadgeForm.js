@@ -16,18 +16,21 @@ class BadgeForm extends React.Component {
       <div>
         <h1>New Attendant</h1>
 
+        {/* FIRST NAME */}
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className="form-group">{/* estilos de bootstrap */}
             <label>First Name</label>
             <input
               onChange={this.props.onChange}
               className="form-control"
               type="text"
               name="firstName"
+              //value va a tener y desplegar cada uno de los input
               value={this.props.formValues.firstName}
             />
           </div>
 
+          {/* LAST NAME */}
           <div className="form-group">
             <label>Last Name</label>
             <input
@@ -39,6 +42,7 @@ class BadgeForm extends React.Component {
             />
           </div>
 
+          {/* EMAIL */}
           <div className="form-group">
             <label>Email</label>
             <input
@@ -50,6 +54,8 @@ class BadgeForm extends React.Component {
             />
           </div>
 
+
+          {/* JOB TITLE */}
           <div className="form-group">
             <label>Job Title</label>
             <input
@@ -61,6 +67,7 @@ class BadgeForm extends React.Component {
             />
           </div>
 
+          {/* TWITTER USER */}
           <div className="form-group">
             <label>Twitter</label>
             <input
