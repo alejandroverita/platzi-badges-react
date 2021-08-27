@@ -25,9 +25,11 @@ const api = {
   badges: {
     list() {
         // throw new Error('500: Server Error');
-      return callApi('/badges');
+        //slice el valor por defecto es 0
+      return callApi('/badges').then(badges => badges.reverse());
     },
     create(badge) {
+      // throw new Error('500: Error Server');
       return callApi(`/badges`, {
         method: 'POST',
         body: JSON.stringify(badge),

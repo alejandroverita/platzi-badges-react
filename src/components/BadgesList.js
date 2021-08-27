@@ -11,7 +11,6 @@ class BadgesListItem extends React.Component {
         <Gravatar
           className="BadgesListItem__avatar"
           email={this.props.badge.email}
-          alt={this.props.badge.firstName}
         />
 
         <div>
@@ -43,7 +42,9 @@ class BadgesList extends React.Component {
           {this.props.badges.map(badge => {
             return (
               <li key={badge.id}>
+                <Link className='text-reset text-decoration-none' to={`/badges/${badge.id}/edit`}>
                 <BadgesListItem badge={badge} />
+                </Link>
               </li>
             );
           })}
