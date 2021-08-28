@@ -9,8 +9,20 @@ import Badge from '../components/Badge';
 import DeleteBadgeModal from '../components/DeleteBadgeModal'
 
 
+function useIncreaseCount(max){
+    //Siempre siempre inicializamos en 0
+    const [count, setCount] = React.useState(0); 
+
+    if (count > max) {
+        setCount(0);
+    }
+
+    return [count, setCount];
+}
+
 //solo tiene que presentar la infromacion, no tiene que hacer cambios en el estado
 function BadgeDetails(props){
+    const [count, setCount] = useIncreaseCount(4)
     const badge = props.badge;
 
     return(
@@ -38,6 +50,11 @@ function BadgeDetails(props){
                         <h2>Actions</h2>
                         <div>
                             <div>
+                                <div onClick={() => {
+                                    setCount(count + 1)
+                                }} className="btn btn-primary mr-4">
+                                    Increase Count : {count}
+                                </div>
                                 <Link className='btn btn-primary mb-4' to={`/badges/${badge.id}/edit`}>Edit</Link>
                             </div>
                             <div>

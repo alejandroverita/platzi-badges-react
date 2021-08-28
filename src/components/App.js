@@ -10,6 +10,9 @@ import BadgeEdit from '../pages/BadgeEdit';
 import NotFound from '../pages/NotFound';
 import Rickandmorty from '../pages/Rickandmorty';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 function App() {
   return (
     //react-router-dom. BrowserRouter solo puede tener 1 hijo
