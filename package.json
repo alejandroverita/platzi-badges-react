@@ -2,7 +2,7 @@
   "homepage":"https://alejandroverita.github.io/platzi-badges-react",
   "name": "platzi-badges",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "npm-run-all -p client server",
     "client": "react-scripts start",
