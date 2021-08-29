@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "33fa394142b4f3c64919",
+    "revision": "e01711017f316fbeeb0f",
     "url": "/platzi-badges-react/static/css/main.cec06a14.chunk.css"
   },
   {
-    "revision": "33fa394142b4f3c64919",
-    "url": "/platzi-badges-react/static/js/main.33fa3941.chunk.js"
+    "revision": "e01711017f316fbeeb0f",
+    "url": "/platzi-badges-react/static/js/main.e0171101.chunk.js"
   },
   {
     "revision": "73acdaba1ecd3ad21d2d",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/platzi-badges-react/static/media/stars.0abcdfcd.svg"
   },
   {
-    "revision": "6c8b94ffb339f728537201837c50d55c",
+    "revision": "24e1b3385a4ca91823d1daec3882e44a",
     "url": "/platzi-badges-react/index.html"
   }
 ];
